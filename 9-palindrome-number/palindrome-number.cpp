@@ -8,7 +8,6 @@ public:
             revhalf=revhalf*10+x%10;
             x/=10;
         }
-        if ( x==revhalf || x==revhalf/10) return true;
-        return false;
+        return x==revhalf || x==revhalf/10;
     }
 };
