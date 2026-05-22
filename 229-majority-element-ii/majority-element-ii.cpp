@@ -3,7 +3,7 @@ public:
     vector<int> majorityElement(vector<int>& nums) {
         vector<int> result;
         int n=nums.size();
-        int cnt1=0,cnt2=0,el1,el2;
+        int cnt1=0,cnt2=0,el1=INT_MIN,el2=INT_MIN;
         for(int i=0;i<n;i++)
         {
             if(cnt1==0 && nums[i]!=el2)
@@ -32,10 +32,7 @@ public:
         }
         
         if(count1>n/3) result.push_back(el1);
-        if(count2>n/3)
-        {
-             if(el1!=el2)  result.push_back(el2);
-        } 
+        if(count2>n/3) result.push_back(el2);
         return result;
     }
 };
