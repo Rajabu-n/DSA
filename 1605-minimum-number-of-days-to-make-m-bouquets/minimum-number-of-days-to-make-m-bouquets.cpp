@@ -16,8 +16,7 @@ public:
            }  
            //for last pass
            no_of_bouquets+=(count/k);
-           if(no_of_bouquets>=m) return true;
-           return false;
+           return no_of_bouquets>=m;
 
     }
     int minDays(vector<int>& bloomDay, int m, int k)
