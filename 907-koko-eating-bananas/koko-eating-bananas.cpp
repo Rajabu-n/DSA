@@ -28,6 +28,6 @@ public:
             else low=mid+1;
             
        }
-       return k;
+       return low;
     }
 };
