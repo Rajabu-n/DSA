@@ -22,7 +22,7 @@ public:
            int cur=returnValue(s[i]);
            int next=returnValue(s[i+1]);
 
-           if(i+1<n && cur<next )
+           if(cur<next )
            {
                 result+=next-cur;
                 i++;
