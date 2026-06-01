@@ -19,43 +19,18 @@ public:
         int result=0;
         for(int i=0;i<n;i++)
         {
-            if(s[i]=='I'&& s[i+1]=='V')
-            {
-                result+=4;
+           int cur=returnValue(s[i]);
+           int next=returnValue(s[i+1]);
+
+           if(i+1<n && cur<next )
+           {
+                result+=next-cur;
                 i++;
-                continue;
-            }
-            if(s[i]=='I'&& s[i+1]=='X')
-            {
-                result+=9;
-                i++;
-                continue;
-            }
-            if(s[i]=='X'&& s[i+1]=='L')
-            {
-                result+=40;
-                i++;
-                continue;
-            }
-            if(s[i]=='X'&& s[i+1]=='C')
-            {
-                result+=90;
-                i++;
-                continue;
-            }
-            if(s[i]=='C'&& s[i+1]=='D')
-            {
-                result+=400;
-                i++;
-                continue;
-            }
-            if(s[i]=='C'&& s[i+1]=='M')
-            {
-                result+=900;
-                i++;
-                continue;
-            }
-            result+=returnValue(s[i]);
+           }
+           else
+           {
+            result+=cur;
+           }
         }
         return result;
     }
