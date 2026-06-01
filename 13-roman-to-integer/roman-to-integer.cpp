@@ -1,36 +1,17 @@
 class Solution {
 public:
-    int returnValue(char c)
-    {
-        switch(c){
-        
-        case 'I': return 1;
-        case 'V':return 5;
-        case 'X':return 10;
-        case 'L':return 50;
-        case 'C':return 100;
-        case 'D': return 500;
-        case 'M':return 1000;
-        }
-        return 0;
-    }
     int romanToInt(string s) {
-        int n=s.length();
+        unordered_map<char,int>roman={
+            {'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}
+        };
         int result=0;
-        for(int i=0;i<n;i++)
+        for(int i=0;i<s.size();i++)
         {
-           int cur=returnValue(s[i]);
-           int next=returnValue(s[i+1]);
-
-           if(cur<next )
-           {
-                result+=next-cur;
-                i++;
-           }
-           else
-           {
-            result+=cur;
-           }
+            if(roman[s[i]]<roman[s[i+1]])
+            {
+                result-=roman[s[i]];
+            }
+            else result+=roman[s[i]];
         }
         return result;
     }
