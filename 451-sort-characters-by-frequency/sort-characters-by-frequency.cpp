@@ -1,31 +1,25 @@
 class Solution {
 public:
     string frequencySort(string s) {
-        int count[256]={0};
-        for(int i=0;i<s.size();i++)
+        unordered_map<char,int>freq;
+        for(char c:s)
         {
-            count[s[i]]++;
+            freq[c]++;
         }
-        string result="";
-        while(true)
+        int n=s.length();
+        vector<string>bucket(n+1);
+        for(auto x:freq)
         {
-            int maxfreq=0;
-            char maxchar;
-            for(int i=0;i<256;i++)
-            {
-                if(count[i]>maxfreq)
-                {
-                    maxchar=(char)i;
-                    maxfreq=count[i];
-                }
-            }
-            if(maxfreq==0)break;
-            for(int i=0;i<maxfreq;i++)
-            {
-                result+=maxchar;
-            }
-            count[maxchar]=0;
+            bucket[x.second]+=x.first;
         }
-        return result;
+        string ans;
+        for(int i=n;i>=1;i--)
+        {
+            for(char x:bucket[i])
+            {
+                ans.append(i,x);
+            }
+        }
+        return ans;
     }
 };
