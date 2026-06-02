@@ -10,8 +10,8 @@ public:
             {
                 freq[s[j]-'a']++;
                 
-                int mini=INT_MAX;
-                int maxi=INT_MIN;
+                int mini=INT_MAX;//should be INT_MAX
+                int maxi=0;
                 for(int k=0;k<26;k++)
                 {
                     if(freq[k]>0)
