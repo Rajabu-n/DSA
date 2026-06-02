@@ -13,7 +13,7 @@ public:
         }
         while(i<n && isdigit(s[i]))
         {
-            ans=(ans*10)+(s[i]-'0');
+            ans=ans*10+s[i]-'0';
             if((sign*ans)<INT_MIN)return INT_MIN;
             if((sign*ans)>INT_MAX)return INT_MAX;
             i++;
