@@ -11,7 +11,7 @@ public:
                 freq[s[j]-'a']++;
                 
                 int mini=INT_MAX;
-                int maxi=0;
+                int maxi=INT_MIN;
                 for(int k=0;k<26;k++)
                 {
                     if(freq[k]>0)
