@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool isPalindrome(string s,int start,int end)
+    bool isPalindrome(const string &s,int start,int end)
     {
         while(start<end)
         {
