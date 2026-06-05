@@ -5,16 +5,8 @@ public:
 
         for(string s:strs)
         {
-            int count[26]={0};
-            for(char c:s)
-            {
-                count[c-'a']++;
-            }
-            string key;
-            for(int j=0;j<26;j++)
-            {
-                key+="#"+to_string(count[j]);
-            }
+            string key=s;
+            sort(key.begin(),key.end());
             mp[key].push_back(s);
         }
         vector<vector<string>>result;
