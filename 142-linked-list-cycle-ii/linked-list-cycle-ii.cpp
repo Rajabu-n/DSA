@@ -16,6 +16,6 @@ public:
             visited.insert(head);
             head=head->next;
        }
-       return head;
+       return NULL;
     }
 };
