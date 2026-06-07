@@ -10,35 +10,57 @@
  */
 class Solution {
 public:
-    ListNode* reverseKGroup(ListNode* head, int k) {
-     if(k<=1 ||head==nullptr) return head;
-     ListNode *dummy=new ListNode(0);
-     dummy->next=head;
-     ListNode *prevgroupend=dummy;
-     while(true)
-     {
-         ListNode *kth=prevgroupend;
-         for(int i=0;i<k;i++)
-         {
-            kth=kth->next;
-            if(kth==nullptr) return dummy->next;
-         }
-          ListNode *groupstart=prevgroupend->next;
-          ListNode *nextgroupstart=kth->next;
-
-           ListNode *prev=nextgroupstart;
-            ListNode *cur=groupstart;
-
-            while(cur!=nextgroupstart)
-            {
-                 ListNode *temp=cur->next;
-                 cur->next=prev;
-                 prev=cur;
-                 cur=temp;
-            }
-            prevgroupend->next=prev;
-            prevgroupend=groupstart;
-     }
-     return dummy->next;
+    ListNode* reverselinkedlist(ListNode* head)
+    {
+        ListNode* cur=head;
+        ListNode* nextnode=head;
+        ListNode* prev=nullptr;
+        while(nextnode)
+        {
+            nextnode=nextnode->next;
+            cur->next=prev;
+            prev=cur;
+            cur=nextnode;
+        }
+        return prev;
     }
- };
+    ListNode* getKthNode(ListNode* head,int k)
+    {
+        ListNode* temp=head;
+        k=k-1;
+        while(k>0 && temp)
+        {
+            k--;
+            temp=temp->next;
+        }
+        return temp;
+    }
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* temp=head;
+        ListNode* prevLast=nullptr;
+        while(temp)
+        {
+            ListNode* kthNode=getKthNode(temp,k);
+            if(kthNode==nullptr)
+            {
+                if(prevLast)prevLast->next=temp;
+                break;
+            }
+            ListNode* nextGrpStart=kthNode->next;
+            kthNode->next=nullptr;
+            ListNode *newHead=reverselinkedlist(temp);
+            if(temp==head)
+            {
+                head=newHead;
+            }
+            else
+            {
+                prevLast->next=newHead;
+            }
+            prevLast=temp;
+            temp=nextGrpStart;
+
+        }
+        return head;
+    }
+};
