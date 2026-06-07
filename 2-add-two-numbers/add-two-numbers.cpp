@@ -16,24 +16,26 @@ public:
         ListNode* newNode;
         int carry=0;
         int sum=0;
-        while(l1||l2)
+        while(l1||l2||carry)
         {
             sum=carry;
-            if(l1)sum+=l1->val;
-            if(l2)sum+=l2->val;
+            if(l1)
+            {
+                sum+=l1->val;
+                l1=l1->next;
+            }
+            if(l2)
+            {
+                sum+=l2->val;
+                l2=l2->next;
+            }
             newNode=new ListNode(sum%10);
             carry=sum/10;
             temp->next=newNode;
-            temp=newNode;;
-            if(l1)l1=l1->next;
-            if(l2)l2=l2->next;
-        }
-        if(carry)
-        {
-            newNode=new ListNode(carry);
-            temp->next=newNode;
             temp=newNode;
+            
         }
+        
         return dummyNode->next;
     }
 };
