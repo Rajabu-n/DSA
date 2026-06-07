@@ -29,7 +29,7 @@ public:
             temp=temp->next;
         }
             if(list1)  temp->next=list1;  
-            if(list2!=nullptr)  temp->next=list2;
+            if(list2)  temp->next=list2;
                
         return dummy->next;
         
