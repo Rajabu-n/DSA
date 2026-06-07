@@ -10,6 +10,18 @@
  */
 class Solution {
 public:
+    ListNode *findLastNode(ListNode* head,int pos)
+    {
+        int count=1;
+        ListNode *cur=head;
+        while(cur)
+        {
+            if(count==pos)return cur;
+            cur=cur->next;
+            count++;
+        }
+        return cur;
+    }
     ListNode* rotateRight(ListNode* head, int k) {
         int len=0;
         ListNode* temp=head;
@@ -19,22 +31,19 @@ public:
             len++;
             temp=temp->next;
         }
+        if(k%len==0)return head;
         k=k%len;
-        if(len==k) return head;
-        while(k>0)
+        ListNode *tail=head;
+        while(tail->next)
         {
-            ListNode* cur=head;
-            ListNode *prev=nullptr;
-            while(cur->next)
-            {
-                prev=cur;
-                cur=cur->next;
-            }
-            prev->next=nullptr;
-            cur->next=head;
-            head=cur;
-            k--;
+            tail=tail->next;
         }
+        tail->next=head;
+        int pos=len-k;
+        ListNode *newLastNode=findLastNode(head,pos);
+        head=newLastNode->next;
+        newLastNode->next=nullptr;
+       
         return head;
     }
 };
