@@ -15,11 +15,14 @@ public:
         if(head==nullptr || head->next==nullptr) return head;
         while(temp && temp->next)
         {
-            while(temp && temp->next && temp->val==temp->next->val)
+            if(temp->val==temp->next->val)
             {
                 temp->next=temp->next->next;
             }
-            if(temp)temp=temp->next;
+            else
+            {
+                temp=temp->next;
+            }
         }
         return head;
     }
