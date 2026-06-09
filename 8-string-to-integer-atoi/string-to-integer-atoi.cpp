@@ -1,23 +1,21 @@
 class Solution {
 public:
-    int helper(string s,int i,long long  num,int sign)
+    int helper(const string& s,int i,long long num,int sign)
     {
-        if(i>s.size()|| !isdigit(s[i]))
-        {
-            return (int)(sign*num);
-        }
+        if(!isdigit(s[i]) || i>s.size()) return (int)sign*num;
         num=num*10+s[i]-'0';
-        if(sign*num>INT_MAX)return INT_MAX;
-        if(sign*num<INT_MIN)return INT_MIN;
-
-        return helper(s,i+1,num,sign);
+        if(sign*num>INT_MAX) return INT_MAX;
+        if(sign*num<INT_MIN) return INT_MIN;
+        return  helper(s,i+1,num,sign);
+        
     }
     int myAtoi(string s) {
+        int n=s.size();
         int i=0;
         int sign=1;
-        int n=s.size();
-        while(i<n&& s[i]==' ')i++;
-        if(i<n && (s[i]=='-'|| s[i]=='+')){
+        while(i<n && s[i]==' ')i++;
+        if(i<n && (s[i]=='+'||s[i]=='-') )
+        {
             if(s[i]=='-')sign=-1;
             i++;
         }
