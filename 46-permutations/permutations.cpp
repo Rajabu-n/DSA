@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void permuteall(int ind,vector<int>& nums,vector<vector<int>>& ans)
+    void permuteAll(int ind,vector<vector<int>>& ans,vector<int>& nums)
     {
         if(ind==nums.size())
         {
@@ -10,14 +10,13 @@ public:
         for(int i=ind;i<nums.size();i++)
         {
             swap(nums[ind],nums[i]);
-            permuteall(ind+1,nums,ans);
+            permuteAll(ind+1,ans,nums);
             swap(nums[ind],nums[i]);
-           
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
-        permuteall(0,nums,ans);
+        permuteAll(0,ans,nums);
         return ans;
     }
 };
