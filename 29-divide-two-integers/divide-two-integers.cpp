@@ -18,15 +18,13 @@ public:
         long long ans=0;
         while(n>=d)
         {
-            long long  power=1;
-            long long sum=d;
-            while(n>=2*sum)
+            long long count=0;
+            while(n>=d<<(count+1))
             {
-                sum*=2;
-                power*=2;
+                count++;
             }
-            n-=sum;
-            ans+=power;
+            n-=d<<count;
+            ans+=(1<<count);
         }
         if(ans>INT_MAX && isPositive) return INT_MAX;;
         if(ans >INT_MAX && !isPositive) return INT_MIN;
