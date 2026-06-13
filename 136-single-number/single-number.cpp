@@ -1,12 +1,11 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int ans=0;
-        for(int x:nums)
+        int num=0;
+        for(int i=0;i<nums.size();i++)
         {
-            ans=ans^x;
+            num=num^nums[i];
         }
-        return ans;
-        
+        return num;
     }
 };
