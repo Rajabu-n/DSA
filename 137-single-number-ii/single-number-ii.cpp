@@ -2,15 +2,12 @@ class Solution {
 public:
     int ans=0;
     int singleNumber(vector<int>& nums) {
-        for(int i=0;i<32;i++)
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+        for(int i=1;i<nums.size();i+=3)
         {
-            int count=0;
-            for(int j=0;j<nums.size();j++)
-            {
-                if(nums[j] & (1<<i)) count++;
-            }
-            if(count%3==1) ans=ans|(1<<i);
+            if(nums[i]!=nums[i-1]) return nums[i-1];
         }
-        return ans;
+        return nums[n-1];//if last element is the single number
     }
 };
