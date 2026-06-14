@@ -2,12 +2,12 @@ class Solution {
 public:
     int ans=0;
     int singleNumber(vector<int>& nums) {
-        int n=nums.size();
-        sort(nums.begin(),nums.end());
-        for(int i=1;i<nums.size();i+=3)
+        int ones=0,twos=0;
+        for(int i=0;i<nums.size();i++)
         {
-            if(nums[i]!=nums[i-1]) return nums[i-1];
+            ones=(ones^nums[i])& ~twos;
+            twos=(twos^nums[i])& ~ones;
         }
-        return nums[n-1];//if last element is the single number
+        return ones;
     }
 };
