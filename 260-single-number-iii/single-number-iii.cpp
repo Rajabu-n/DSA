@@ -6,7 +6,7 @@ public:
         {
             xorr=xorr^nums[i];
         }
-        int rightmost = xorr ^ (xorr & (xorr - 1U));
+        unsigned int rightmost = (unsigned int)xorr & (-(unsigned int)xorr);
         int b1=0,b2=0;
         for(int i=0;i<nums.size();i++)
         {
