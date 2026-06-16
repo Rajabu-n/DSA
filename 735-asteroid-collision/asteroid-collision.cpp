@@ -2,8 +2,8 @@ class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
         stack<int>st;
+        vector<int>ans;
         int n=asteroids.size();
-        vector<int>result;
         for(int i=0;i<n;i++)
         {
             if(st.empty())
@@ -14,12 +14,10 @@ public:
             bool found=false;
             while(!st.empty() && asteroids[i]<0 && st.top()>0)
             {
-               
-                if(st.top()< abs(asteroids[i]))
+                if(st.top()<abs(asteroids[i]))
                 {
                     st.pop();
                     continue;
-
                 }
                 else if(st.top()==abs(asteroids[i]))
                 {
@@ -28,18 +26,18 @@ public:
                 found=true;
                 break;
             }
-            if(!found)
+            if(!found) 
             {
-                    st.push(asteroids[i]);
-             }
-           
-        }
-         while(!st.empty())
-            {
-                result.push_back(st.top());
-                st.pop();
+                st.push(asteroids[i]);
             }
-        reverse(result.begin(),result.end());
-        return result;
+        }
+       
+        while(!st.empty())
+        {
+            ans.push_back(st.top());
+            st.pop();
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
     }
 };
