@@ -11,7 +11,8 @@ public:
             else
             {
                 if(st.empty()) return false;
-                if((s[i]==')' && st.top()=='(')||(s[i]==']'&& st.top()=='[') || (s[i]=='}' && st.top()=='{'))
+                char top=st.top();
+                if((s[i]==')' && top=='(')||(s[i]==']'&& top=='[') || (s[i]=='}' && top=='{'))
                 {
                     st.pop();
                 }
