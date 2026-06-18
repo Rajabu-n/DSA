@@ -1,11 +1,11 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int n=s.size();
         int left=0;
         int right=0;
         int maxlen=0;
-        vector<int>hash(260,0);
+        int n=s.size();
+        vector<int>hash(256,0);
         while(right<n)
         {
             hash[s[right]]++;
