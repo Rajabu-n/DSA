@@ -12,7 +12,8 @@ public:
             {
                 zeros++;
             }
-            while(zeros>k)
+            if(zeros<=k) maxlen=max(maxlen,right-left+1);
+            if(zeros>k)
             {
                 if(nums[left]==0)
                 {
@@ -20,9 +21,7 @@ public:
                 }
                 left++;
             }
-            if(zeros<=k) maxlen=max(maxlen,right-left+1);
-            right++;
-           
+            right++;       
         }
         return maxlen;
     }
