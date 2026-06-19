@@ -20,13 +20,8 @@ public:
             while(changes>k)
             {
                 hash[s[left]-'A']--;
-                maxfreq=0;
-                for(int i=0;i<26;i++)
-                {
-                    maxfreq=max(maxfreq,hash[i]);
-                }
                 left++;
-                 changes = (right - left + 1) - maxfreq;
+                changes = (right - left + 1) - maxfreq;
             }
             right++;
         }
