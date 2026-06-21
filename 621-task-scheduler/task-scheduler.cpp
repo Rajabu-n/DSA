@@ -18,7 +18,7 @@ public:
             time++;
             if(!pq.empty() && pq.top()-1!=0) q.push({pq.top()-1,time+n});
             if(!pq.empty())pq.pop();
-            if(time==q.front().second)
+            if(!q.empty() && time==q.front().second)
             {
                 pq.push(q.front().first);
                 q.pop();
