@@ -1,20 +1,25 @@
 class Solution {
 public:
     vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
-        map<int, vector<pair<int,int>>> mp;
-        for (auto& p : points) {
-            int x = p[0], y = p[1];
-            int distSq = x*x + y*y;
-            mp[distSq].push_back({x, y});
-        }
-
-        vector<vector<int>> ans;
-        for (auto& [dist, pts] : mp) {
-            for (auto& pr : pts) {
-                if ((int)ans.size() == k) return ans;
-                ans.push_back({pr.first, pr.second});
+        vector<vector<int>>ans;
+        priority_queue<pair<int,pair<int,int>>>pq;;
+        for(int i=0;i<points.size();i++)
+        {
+            int x=points[i][0];
+            int y=points[i][1];
+            int distance=x*x+y*y;
+            pq.push({distance,{x,y}});
+            if(pq.size()>k)
+            {
+                pq.pop();
             }
         }
-        return ans;
+            while(!pq.empty())
+            {
+                ans.push_back({pq.top().second.first,pq.top().second.second});
+                pq.pop();
+                k--;
+            }
+            return ans;
     }
 };
