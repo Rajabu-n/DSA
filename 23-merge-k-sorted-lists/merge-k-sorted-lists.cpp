@@ -10,38 +10,33 @@
  */
 class Solution {
 public:
-    ListNode *mergeTwo(ListNode *l1,ListNode* l2)
+    struct cmp
     {
-        ListNode* dummy=new ListNode(-1);
-        ListNode* temp=dummy;
-        while(l1 && l2)
+        bool operator()(ListNode *a,ListNode *b)
         {
-            if(l1->val<=l2->val)
-            {
-                temp->next=l1;
-                l1=l1->next;
-            }
-            else
-            {
-                temp->next=l2;
-                l2=l2->next;
-            }
-            temp=temp->next;
+            return a->val > b->val;
         }
-        temp->next= l1?l1:l2;
-        return dummy->next;
-    }
+    };
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if(lists.size()==0)return nullptr;
-        int interval=1;
-        while(interval<lists.size())
+        priority_queue<ListNode*,vector<ListNode*>,cmp>pq;
+        ListNode* dummy=new ListNode(0);
+        ListNode* temp=dummy;
+        for(int i=0;i<lists.size();i++)
         {
-            for(int i=0;i+interval<lists.size();i+=2*interval)
-            {
-                lists[i]=mergeTwo(lists[i],lists[i+interval]);
-            }
-            interval*=2;
+                if(lists[i])pq.push(lists[i]);
         }
-        return lists[0];
+        while(!pq.empty())
+        {
+            ListNode* node=pq.top();
+            pq.pop();
+            temp->next=node;
+            temp=temp->next;
+            if(node->next)
+            {
+                pq.push(node->next);
+              
+            }
+        }
+        return dummy->next;
     }
 };
