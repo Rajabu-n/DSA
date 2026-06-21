@@ -2,7 +2,7 @@ class Solution {
 public:
     int lastStoneWeight(vector<int>& stones) {
        
-        if(stones.size()==1) return 1;
+        if(stones.size()==1) return stones[0];
         if(stones.size()==2)
         {
             int val=abs(stones[0]-stones[1]);
@@ -23,6 +23,7 @@ public:
                 sort(stones.begin(),stones.end());
             }
         }
+        if(stones.empty()) return 0;
         return stones[0];
     }
 };
