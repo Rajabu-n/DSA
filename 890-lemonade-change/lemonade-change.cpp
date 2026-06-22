@@ -18,7 +18,7 @@ public:
                     count_10--;
                     count_5--;
                 }  
-                else if(count_5>2)
+                else if(count_5>=3)
                 {
                     count_5-=3;
                 }
