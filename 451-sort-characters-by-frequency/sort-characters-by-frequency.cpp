@@ -14,9 +14,10 @@ public:
         }
         while(!pq.empty())
         {
-            auto[f,ch]=pq.top();
+            //auto[f,ch]=pq.top();
+            pair<int,char>ch=pq.top();
             pq.pop();
-            ans.append(f,ch);
+            ans.append(ch.first,ch.second);
         }
         return ans;
     }
