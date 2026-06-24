@@ -1,17 +1,14 @@
 class Solution {
 public:
 
-    /*
-    static bool comp(Data a,Data b)
+    
+    static bool comp(vector<int>& a,vector<int>& b)
     {
-        return a.end<b.end;
+        return a[1]<b[1];
     }
-    */
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
         int n=intervals.size();
-        sort(intervals.begin(),intervals.end(),[](vector<int>&a,vector<int>&b){
-            return a[1]<b[1];
-        });
+        sort(intervals.begin(),intervals.end(),comp);
         int max_non_overlap=1;
         int endtime=intervals[0][1];
         for(int i=1;i<n;i++)
